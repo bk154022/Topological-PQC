@@ -82,3 +82,34 @@ Different braid representation gives same invariant value.
 Observation:
 
 All tested braid words produced the same trace magnitude in current model.
+
+### Observation
+
+The computed trace magnitude remains constant across different braid words,
+including both Trefoil (T(2,3)) and Cinquefoil (T(2,5)).
+
+This indicates that the current matrix representation produces a stable but
+non-discriminative invariant.
+
+While the system successfully processes braid words of varying length,
+it does not yet distinguish between different knot structures.
+
+This suggests that further refinement is required to obtain a more
+informative topological invariant.
+
+race of trefoil braid: (7.719026956613581+0j)
+Magnitude of trace: 7.719027
+
+Same knot, different word: trace = (7.719026956613581+0j), magnitude = 7.719027
+Magnitudes match: True
+
+Cinquefoil results:
+Trace: (7.719026956613581+0j)
+Magnitude: 7.719027
+
+
+--- Scaling Test ---
+Trefoil → 7.719027
+Cinquefoil → 7.719027
+
+

@@ -17,8 +17,15 @@ if __name__ == "__main__":
  print(f"\nSame knot, different word: trace = {tr2}, magnitude = {mag2:.6f}")
  print("Magnitudes match:", np.isclose(mag, mag2))
 
+# ---- Cinquefoil Test ----
+cinquefoil = [1, 1, 1, 1, 1]
+tr_c, mag_c = trace_invariant(cinquefoil)
 
- print("\n--- Experiments ---")
+print("\nCinquefoil results:")
+print(f"Trace: {tr_c}")
+print(f"Magnitude: {mag_c:.6f}")
+ 
+print("\n--- Experiments ---")
 
 words = [
     [1, 2, 1],
@@ -31,3 +38,15 @@ words = [
 for w in words:
     tr, mag = trace_invariant(w)
     print(w, "→", round(mag, 4))
+
+
+print("\n--- Scaling Test ---")
+
+tests = {
+    "Trefoil": [1,2,1],
+    "Cinquefoil": [1,1,1,1,1]
+}
+
+for name, word in tests.items():
+    tr, mag = trace_invariant(word)
+    print(name, "→", round(mag, 6))
