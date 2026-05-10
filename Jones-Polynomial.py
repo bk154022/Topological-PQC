@@ -1,8 +1,5 @@
 """
 TASK 6: Writhe Normalization and Jones Polynomial
-Helix Topological-PQC Project
-Author: Bilal Khan
-Date: 2026-05-05
 
 Goal:
 Convert Kauffman Bracket into a true topological invariant
