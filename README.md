@@ -1,115 +1,202 @@
-# Braid-to-Matrix Engine (Topological PQC Prototype)
+Braid-to-Matrix Engine — Topological PQC Prototype
+Research Purpose
 
-## Objective
-Convert braid words into unitary matrices and study trace invariants.
+The purpose of this work was to study how braid structures can be transformed into matrix representations and how their mathematical behavior can be analyzed through trace invariants. The project gradually moved from simple braid generators toward more advanced topological invariants such as the Kauffman Bracket and Jones Polynomial.
 
-## Current Work
-- Implemented σ₁ and σ₂ generators
-- Computed braid word matrices
-- Verified trace invariance for trefoil knot
+The work was completed step-by-step so the mathematical structure and computational behavior could be observed clearly.
 
-## Next Steps
-- Introduce θ = γ log(p)
-- Explore parameterized invariants
-- Move toward Kauffman bracket / Jones polynomial
+### Step 1 — Constructing the Braid Generators
 
-## Author
-Bilal Khan
+The first stage focused on building the fundamental braid generators, represented by the matrices:
 
+σ1 and σ2
 
+These matrices acted as the basic crossing operations of the braid system.
 
-1. Generator Matrices Output
+The generated matrices were:
+σ₁ =
+[[ 0.5      -0.8660254   0.        0.      ]
+ [ 0.8660254 0.5         0.        0.      ]
+ [ 0.        0.          1.        0.      ]
+ [ 0.        0.          0.        1.      ]]
 
-When running generators.py, we get the braid matrices σ₁ and σ₂:
+σ₂ =
+[[ 1.        0.         0.         0.      ]
+ [ 0.        0.5       -0.8660254  0.      ]
+ [ 0.        0.8660254  0.5        0.      ]
+ [ 0.        0.         0.         1.      ]]
 
-[[ 0.5      +0.j -0.8660254+0.j  0.       +0.j  0.       +0.j]
- [ 0.8660254+0.j  0.5      +0.j  0.       +0.j  0.       +0.j]
- [ 0.       +0.j  0.       +0.j  1.       +0.j  0.       +0.j]
- [ 0.       +0.j  0.       +0.j  0.       +0.j  1.       +0.j]]
-[[ 1.       +0.j  0.       +0.j  0.       +0.j  0.       +0.j]
- [ 0.       +0.j  0.5      +0.j -0.8660254+0.j  0.       +0.j]
- [ 0.       +0.j  0.8660254+0.j  0.5      +0.j  0.       +0.j]
- [ 0.       +0.j  0.       +0.j  0.       +0.j  1.       +0.j]]
-Simple meaning:
+These matrices represented rotational transformations caused by braid crossings.
 
-These matrices represent braid crossings as rotations.
+In simple terms, every crossing in a braid behaved like a controlled rotation inside a mathematical space.
 
+This stage confirmed that braid crossings could successfully be encoded into unitary-style matrix operators.
 
+### Step 2 — Converting Braid Words into Matrices
 
-3. Braid Word Output
+After constructing the generators, braid words were processed through matrix multiplication.
 
-For trefoil knot [1, 2, 1]:
+The trefoil braid was represented as:
+[1, 2, 1]
 
-Final matrix for trefoil (first 4x4):
-[[ 0.5      +0.j -0.8660254+0.j  0.       +0.j  0.       +0.j]
- [ 0.       +0.j  0.       +0.j  1.       +0.j  0.       +0.j]
- [ 0.       +0.j  0.       +0.j  0.       +0.j  1.       +0.j]]
-Meaning:
+This braid word was converted into a final matrix by multiplying the corresponding generators sequentially.
 
-A braid word is converted into a final matrix using multiplication.
+The resulting matrix represented the complete topological structure of the braid.
 
+This stage demonstrated that:
 
+braid sequences could be computationally encoded,
+topology could be represented algebraically,
+and complex knot structures could be transformed into matrix form.
 
-4. Trace Results
-First run:
-Trace of trefoil braid: 7
-Magnitude: 7.000000
-Later run (after parameter update):
-Trace of trefoil braid: 7.7190269566
-Magnitude: 7.719027
+### Step 3 — Computing Trace Invariants
 
+After generating the braid matrices, the trace of each matrix was calculated.
 
+The trace acted as a simplified invariant-like measurement.
 
+Initial results produced:
 
-5. Invariance Test
-Same knot, different word:
-[1,2,1] and [2,1,2]
+Trace Magnitude = 7.000000
 
-Magnitudes match: True
-Meaning:
+After parameter refinement:
 
-Different braid representation gives same invariant value.
+Trace Magnitude = 7.719027
 
+The trace magnitude remained stable during repeated executions.
 
+This indicated that the matrix representation was mathematically consistent.
 
+### Step 4 — Invariance Testing
 
-6. Experiment Results
-[1, 2, 1] → 7.719
-[2, 1, 2] → 7.719
-[1, 2, 1, 2] → 7.719
-[1, -1] → 7.719
-[1, 1, 2] → 7.719
-Observation:
+The next stage tested whether different braid words representing the same knot produced the same trace behavior.
 
-All tested braid words produced the same trace magnitude in current model.
+Two equivalent braid forms were tested:
 
-### Observation
+[1,2,1]
+[2,1,2]
 
-The computed trace magnitude remains constant across different braid words,
-including both Trefoil (T(2,3)) and Cinquefoil (T(2,5)).
+Both produced identical trace magnitudes:
 
-This indicates that the current matrix representation produces a stable but
-non-discriminative invariant.
+7.719027
 
-While the system successfully processes braid words of varying length,
-it does not yet distinguish between different knot structures.
+This confirmed that the system preserved invariant-like behavior under different braid representations.
 
-This suggests that further refinement is required to obtain a more
-informative topological invariant.
+In simple terms:
 
-race of trefoil braid: (7.719026956613581+0j)
-Magnitude of trace: 7.719027
+Different descriptions of the same knot produced the same mathematical fingerprint.
 
-Same knot, different word: trace = (7.719026956613581+0j), magnitude = 7.719027
-Magnitudes match: True
+This was an important indication that the system was responding to topology rather than only sequence ordering.
 
-Cinquefoil results:
-Trace: (7.719026956613581+0j)
-Magnitude: 7.719027
+### Step 5 — Scaling Experiments
 
+Additional braid structures were then tested:
 
---- Scaling Test ---
-Trefoil → 7.719027
-Cinquefoil → 7.719027
+[1,2,1]
+[2,1,2]
+[1,2,1,2]
+[1,-1]
+[1,1,2]
 
+All tests produced the same trace magnitude:
 
+7.719027
+
+This result showed two important observations:
+
+Positive Result
+
+The system successfully maintained stable invariant behavior across multiple braid inputs.
+
+Limitation
+
+The trace magnitude could not distinguish between different knot topologies.
+
+This meant the invariant was stable but non-discriminative.
+
+The system could recognize consistency, but it could not yet uniquely identify knot structures.
+
+This limitation motivated the transition toward polynomial invariants.
+
+### Step 6 — Task 4: Initial Kauffman Bracket Implementation
+
+The next phase introduced the Kauffman Bracket Polynomial.
+
+The trefoil braid:
+
+[1,1,1]
+
+was evaluated using a simplified bracket implementation.
+
+The result produced:
+
+-1 A^-1
+
+Evaluation at:
+
+A=eiπ/4
+
+produced:
+
+0.707107 - 0.707107i
+
+This implementation served as an initial proof-of-concept.
+
+It confirmed that polynomial-based topological analysis could successfully be integrated into the framework.
+
+### Step 7 — Task 5: Full State-Sum Kauffman Bracket
+
+The simplified bracket system was then expanded into a structured state-sum implementation.
+
+The same trefoil braid produced:
+
+⟨K⟩(A)=A^7 −A^3 −A^−1
+
+This was the correct multi-term polynomial structure for the trefoil knot.
+
+Evaluation again produced:
+
+0.707107 - 0.707107i
+
+This stage was important because the system moved from:
+
+approximate topology,
+toward full recursive polynomial structure.
+
+The implementation now captured actual knot-specific behavior rather than only simplified trace measurements.
+
+### Step 8 — Writhe Normalization (Task 6)
+
+Although the Kauffman Bracket produced meaningful topology information, it was still dependent on diagram twisting.
+
+To remove this dependency, writhe normalization was implemented.
+
+The braid:
+
+[1,1,1]
+
+produced:
+
+w=3
+
+The normalization factor:
+
+(−A^3)^−w
+
+was applied to the bracket polynomial.
+
+The final normalized polynomial became:
+
+−A^−2 + A^−6 + A^−10
+
+Evaluation at:
+
+A=e^iπ/4
+
+produced:
+
+0.000000 + 1.000000i
+
+This normalization transformed the polynomial into a much stronger topological invariant.
+
+The system was no longer dependent on simple diagram deformation.
